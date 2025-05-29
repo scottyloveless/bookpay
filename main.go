@@ -55,6 +55,10 @@ func calculatePay(childRl, bookRl, numPages, numChapters int) (string, string) {
 	readingLevelDiff := bookRl - childRl
 
 	switch readingLevelDiff {
+	case -2:
+		difficultyMultiplier = -0.1
+	case -1:
+		difficultyMultiplier = 0.5
 	case 0:
 		difficultyMultiplier = 1.0
 	case 1:
