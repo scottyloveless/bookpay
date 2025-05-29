@@ -51,24 +51,24 @@ func main() {
 }
 
 func calculatePay(childRl, bookRl, numPages, numChapters int) (string, string) {
-	difficultyMultiplier := 1.0
+	var difficultyMultiplier float64
 	readingLevelDiff := bookRl - childRl
 
 	switch readingLevelDiff {
 	case 0:
 		difficultyMultiplier = 1.0
 	case 1:
-		difficultyMultiplier = 1.25
+		difficultyMultiplier = 1.10
 	case 2:
-		difficultyMultiplier = 1.50
+		difficultyMultiplier = 1.25
 	case 3:
-		difficultyMultiplier = 1.75
+		difficultyMultiplier = 1.50
 	default:
-		difficultyMultiplier = 0.5
+		difficultyMultiplier = -0.25
 	}
 
 	baseBookPrice := 5.00
-	basePagePrice := 0.025
+	basePagePrice := 0.03
 	priceForBook := baseBookPrice + (basePagePrice * difficultyMultiplier * float64(numPages))
 	pricePerChapter := priceForBook / float64(numChapters)
 
